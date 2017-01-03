@@ -21,8 +21,8 @@ struct KeyGenerator {
         }
     }
     
-    static func generate(raw: String) -> [String] {
-        let matched = matches(for: "\\\"\\w+\\.\\w+\\\" = ", in: raw)
+    static func generate(localizationFileContents: String) -> [String] {
+        let matched = matches(for: "\\\"\\w+\\.\\w+\\\" = ", in: localizationFileContents)
         
         let results = matched.map {(x: String) -> String in
             var match = matches(for: "\\w+\\.\\w+", in: x)
