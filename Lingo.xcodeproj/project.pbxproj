@@ -12,6 +12,12 @@
 		6B81E7371E1C492600275CF6 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81E7361E1C492600275CF6 /* Struct.swift */; };
 		6B81E7391E1C5A3D00275CF6 /* SwiftGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81E7381E1C5A3D00275CF6 /* SwiftGenerator.swift */; };
 		6B81E73B1E1C5A5100275CF6 /* String+Lowercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81E73A1E1C5A5100275CF6 /* String+Lowercase.swift */; };
+		6BF988831E1C711700C33153 /* LingoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988821E1C711700C33153 /* LingoTests.swift */; };
+		6BF988881E1C716F00C33153 /* String+Lowercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81E73A1E1C5A5100275CF6 /* String+Lowercase.swift */; };
+		6BF988891E1C724F00C33153 /* StructGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81E7341E1C488900275CF6 /* StructGenerator.swift */; };
+		6BF9888A1E1C72C000C33153 /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81E7361E1C492600275CF6 /* Struct.swift */; };
+		6BF9888B1E1C74DB00C33153 /* SwiftGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B81E7381E1C5A3D00275CF6 /* SwiftGenerator.swift */; };
+		6BF9888E1E1C76A800C33153 /* generated_swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6BF9888C1E1C763D00C33153 /* generated_swift.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,10 +39,21 @@
 		6B81E7361E1C492600275CF6 /* Struct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		6B81E7381E1C5A3D00275CF6 /* SwiftGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftGenerator.swift; sourceTree = "<group>"; };
 		6B81E73A1E1C5A5100275CF6 /* String+Lowercase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Lowercase.swift"; sourceTree = "<group>"; };
+		6BF988801E1C711700C33153 /* LingoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LingoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF988821E1C711700C33153 /* LingoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingoTests.swift; sourceTree = "<group>"; };
+		6BF988841E1C711700C33153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BF9888C1E1C763D00C33153 /* generated_swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = generated_swift.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6B81E7261E1C46F700275CF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF9887D1E1C711700C33153 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				6B81E72B1E1C46F700275CF6 /* Lingo */,
+				6BF988811E1C711700C33153 /* LingoTests */,
 				6B81E72A1E1C46F700275CF6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				6B81E7291E1C46F700275CF6 /* Lingo */,
+				6BF988801E1C711700C33153 /* LingoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +91,16 @@
 				6B81E7381E1C5A3D00275CF6 /* SwiftGenerator.swift */,
 			);
 			path = Lingo;
+			sourceTree = "<group>";
+		};
+		6BF988811E1C711700C33153 /* LingoTests */ = {
+			isa = PBXGroup;
+			children = (
+				6BF9888C1E1C763D00C33153 /* generated_swift.txt */,
+				6BF988821E1C711700C33153 /* LingoTests.swift */,
+				6BF988841E1C711700C33153 /* Info.plist */,
+			);
+			path = LingoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +123,23 @@
 			productReference = 6B81E7291E1C46F700275CF6 /* Lingo */;
 			productType = "com.apple.product-type.tool";
 		};
+		6BF9887F1E1C711700C33153 /* LingoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BF988871E1C711700C33153 /* Build configuration list for PBXNativeTarget "LingoTests" */;
+			buildPhases = (
+				6BF9887C1E1C711700C33153 /* Sources */,
+				6BF9887D1E1C711700C33153 /* Frameworks */,
+				6BF9887E1E1C711700C33153 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LingoTests;
+			productName = LingoTests;
+			productReference = 6BF988801E1C711700C33153 /* LingoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -105,6 +151,11 @@
 				ORGANIZATIONNAME = Mobelux;
 				TargetAttributes = {
 					6B81E7281E1C46F700275CF6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = UG892XBK75;
+						ProvisioningStyle = Automatic;
+					};
+					6BF9887F1E1C711700C33153 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = UG892XBK75;
 						ProvisioningStyle = Automatic;
@@ -124,9 +175,21 @@
 			projectRoot = "";
 			targets = (
 				6B81E7281E1C46F700275CF6 /* Lingo */,
+				6BF9887F1E1C711700C33153 /* LingoTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6BF9887E1E1C711700C33153 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BF9888E1E1C76A800C33153 /* generated_swift.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6B81E7251E1C46F700275CF6 /* Sources */ = {
@@ -138,6 +201,18 @@
 				6B81E7351E1C488900275CF6 /* StructGenerator.swift in Sources */,
 				6B81E72D1E1C46F700275CF6 /* main.swift in Sources */,
 				6B81E7391E1C5A3D00275CF6 /* SwiftGenerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BF9887C1E1C711700C33153 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BF9888A1E1C72C000C33153 /* Struct.swift in Sources */,
+				6BF9888B1E1C74DB00C33153 /* SwiftGenerator.swift in Sources */,
+				6BF988891E1C724F00C33153 /* StructGenerator.swift in Sources */,
+				6BF988881E1C716F00C33153 /* String+Lowercase.swift in Sources */,
+				6BF988831E1C711700C33153 /* LingoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +325,34 @@
 			};
 			name = Release;
 		};
+		6BF988851E1C711700C33153 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UG892XBK75;
+				INFOPLIST_FILE = LingoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobelux.LingoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6BF988861E1C711700C33153 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = UG892XBK75;
+				INFOPLIST_FILE = LingoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobelux.LingoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -270,6 +373,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6BF988871E1C711700C33153 /* Build configuration list for PBXNativeTarget "LingoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BF988851E1C711700C33153 /* Debug */,
+				6BF988861E1C711700C33153 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

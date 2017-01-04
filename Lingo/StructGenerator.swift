@@ -22,6 +22,8 @@ struct StructGenerator {
                 return $0.substring(from: prefixRange.upperBound)
             })
             return Struct(name: $0, keys: keys.sorted())
+        }).sorted(by: { (lhs, rhs) -> Bool in
+            return lhs.name < rhs.name
         })
     }
 }
