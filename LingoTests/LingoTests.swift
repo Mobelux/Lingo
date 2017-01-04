@@ -104,4 +104,17 @@ class LingoTests: XCTestCase {
             XCTAssert(false, error.localizedDescription)
         }
     }
+
+    func testEverything() {
+        let arguments = ["--input", inputURL.path, "--output", outputURL.path]
+        let success = Lingo.run(withArguments: arguments)
+        XCTAssert(success, "Did not succeed")
+
+        let expectedSwift = try! String(contentsOf: expectedSwiftURL)
+        let generatedSwift = try? String(contentsOf: outputURL)
+        XCTAssertNotNil(generatedSwift, "Didn't generate Swift")
+        if let generatedSwift = generatedSwift {
+            XCTAssert(generatedSwift == expectedSwift, "Generated Swift doesn't match expected")
+        }
+    }
 }
