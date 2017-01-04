@@ -4,15 +4,15 @@ import Foundation
 
 struct Lingo {
     struct Flair {
-        static let description = NSLocalizedString("Flair.Description", comment="")
+        static let description = NSLocalizedString("Flair.Description", comment:"")
     }
 
     struct Lingo {
-        static let title = NSLocalizedString("Lingo.Title", comment="")
-        static let wasHisName = NSLocalizedString("Lingo.WasHisName", comment="")
+        static let title = NSLocalizedString("Lingo.Title", comment:"")
+        static let wasHisName = NSLocalizedString("Lingo.WasHisName", comment:"")
     }
 
     struct MONK {
-        static let title = NSLocalizedString("MONK.Title", comment="")
+        static let title = NSLocalizedString("MONK.Title", comment:"")
     }
 }

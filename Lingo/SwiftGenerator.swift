@@ -28,7 +28,7 @@ struct SwiftGenerator {
         var swift = "    struct \(aStruct.name) {"
         for key in aStruct.keys {
             let lowercasedKey = key.lowercaseFirstCharacter()
-            swift += "\n        static let \(lowercasedKey) = NSLocalizedString(\"\(aStruct.name).\(key)\", comment=\"\")"
+            swift += "\n        static let \(lowercasedKey) = NSLocalizedString(\"\(aStruct.name).\(key)\", comment:\"\")"
         }
         swift += "\n    }"
         return swift
