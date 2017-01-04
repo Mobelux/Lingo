@@ -21,6 +21,12 @@
 		6BF9888E1E1C76A800C33153 /* generated_swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6BF9888C1E1C763D00C33153 /* generated_swift.txt */; };
 		6BF9888F1E1C784C00C33153 /* KeyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5AAF201E1C62F90048B304 /* KeyGenerator.swift */; };
 		6BF988911E1C787B00C33153 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BF988901E1C787B00C33153 /* Localizeable.strings */; };
+		6BF988941E1D434900C33153 /* ArgumentsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988931E1D434900C33153 /* ArgumentsParser.swift */; };
+		6BF988961E1D436300C33153 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988951E1D436300C33153 /* FileHandler.swift */; };
+		6BF988981E1D44CA00C33153 /* Lingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988971E1D44CA00C33153 /* Lingo.swift */; };
+		6BF988991E1D528B00C33153 /* ArgumentsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988931E1D434900C33153 /* ArgumentsParser.swift */; };
+		6BF9889A1E1D531400C33153 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988951E1D436300C33153 /* FileHandler.swift */; };
+		6BF9889B1E1D55B200C33153 /* Lingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988971E1D44CA00C33153 /* Lingo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +54,9 @@
 		6BF988841E1C711700C33153 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BF9888C1E1C763D00C33153 /* generated_swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = generated_swift.txt; sourceTree = "<group>"; };
 		6BF988901E1C787B00C33153 /* Localizeable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizeable.strings; sourceTree = "<group>"; };
+		6BF988931E1D434900C33153 /* ArgumentsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentsParser.swift; sourceTree = "<group>"; };
+		6BF988951E1D436300C33153 /* FileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
+		6BF988971E1D44CA00C33153 /* Lingo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lingo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +98,11 @@
 		6B81E72B1E1C46F700275CF6 /* Lingo */ = {
 			isa = PBXGroup;
 			children = (
-				6B81E72C1E1C46F700275CF6 /* main.swift */,
+				6BF988931E1D434900C33153 /* ArgumentsParser.swift */,
+				6BF988951E1D436300C33153 /* FileHandler.swift */,
 				6A5AAF201E1C62F90048B304 /* KeyGenerator.swift */,
+				6BF988971E1D44CA00C33153 /* Lingo.swift */,
+				6B81E72C1E1C46F700275CF6 /* main.swift */,
 				6B81E73A1E1C5A5100275CF6 /* String+Lowercase.swift */,
 				6B81E7361E1C492600275CF6 /* Struct.swift */,
 				6B81E7341E1C488900275CF6 /* StructGenerator.swift */,
@@ -206,7 +218,10 @@
 			files = (
 				6B81E7371E1C492600275CF6 /* Struct.swift in Sources */,
 				6B81E73B1E1C5A5100275CF6 /* String+Lowercase.swift in Sources */,
+				6BF988961E1D436300C33153 /* FileHandler.swift in Sources */,
 				6B81E7351E1C488900275CF6 /* StructGenerator.swift in Sources */,
+				6BF988941E1D434900C33153 /* ArgumentsParser.swift in Sources */,
+				6BF988981E1D44CA00C33153 /* Lingo.swift in Sources */,
 				6A5AAF211E1C62F90048B304 /* KeyGenerator.swift in Sources */,
 				6B81E72D1E1C46F700275CF6 /* main.swift in Sources */,
 				6B81E7391E1C5A3D00275CF6 /* SwiftGenerator.swift in Sources */,
@@ -219,7 +234,10 @@
 			files = (
 				6BF9888A1E1C72C000C33153 /* Struct.swift in Sources */,
 				6BF9888B1E1C74DB00C33153 /* SwiftGenerator.swift in Sources */,
+				6BF9889A1E1D531400C33153 /* FileHandler.swift in Sources */,
 				6BF988891E1C724F00C33153 /* StructGenerator.swift in Sources */,
+				6BF988991E1D528B00C33153 /* ArgumentsParser.swift in Sources */,
+				6BF9889B1E1D55B200C33153 /* Lingo.swift in Sources */,
 				6BF9888F1E1C784C00C33153 /* KeyGenerator.swift in Sources */,
 				6BF988881E1C716F00C33153 /* String+Lowercase.swift in Sources */,
 				6BF988831E1C711700C33153 /* LingoTests.swift in Sources */,
