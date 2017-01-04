@@ -90,5 +90,18 @@ class LingoTests: XCTestCase {
         XCTAssertNotNil(arguments1, "We should have arguments")
         XCTAssertNil(arguments2, "We should not have arguments")
     }
-    
+
+    func testFileHandling() {
+        let arguments = Arguments(inputURL: inputURL, outputURL: outputURL)
+
+        let fileData = FileHandler.readFiles(from: arguments)
+        XCTAssertNotNil(fileData, "Couldn't read files")
+
+        let expectedSwift = try! String(contentsOf: expectedSwiftURL)
+        do {
+            try FileHandler.writeOutput(swift: expectedSwift, to: arguments)
+        } catch let error {
+            XCTAssert(false, error.localizedDescription)
+        }
+    }
 }

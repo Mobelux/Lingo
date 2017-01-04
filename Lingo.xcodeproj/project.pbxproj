@@ -22,7 +22,9 @@
 		6BF9888F1E1C784C00C33153 /* KeyGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5AAF201E1C62F90048B304 /* KeyGenerator.swift */; };
 		6BF988911E1C787B00C33153 /* Localizeable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6BF988901E1C787B00C33153 /* Localizeable.strings */; };
 		6BF988941E1D434900C33153 /* ArgumentsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988931E1D434900C33153 /* ArgumentsParser.swift */; };
+		6BF988961E1D436300C33153 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988951E1D436300C33153 /* FileHandler.swift */; };
 		6BF988991E1D528B00C33153 /* ArgumentsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988931E1D434900C33153 /* ArgumentsParser.swift */; };
+		6BF9889A1E1D531400C33153 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF988951E1D436300C33153 /* FileHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +53,7 @@
 		6BF9888C1E1C763D00C33153 /* generated_swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = generated_swift.txt; sourceTree = "<group>"; };
 		6BF988901E1C787B00C33153 /* Localizeable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizeable.strings; sourceTree = "<group>"; };
 		6BF988931E1D434900C33153 /* ArgumentsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentsParser.swift; sourceTree = "<group>"; };
+		6BF988951E1D436300C33153 /* FileHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				6B81E72C1E1C46F700275CF6 /* main.swift */,
+				6BF988931E1D434900C33153 /* ArgumentsParser.swift */,
+				6BF988951E1D436300C33153 /* FileHandler.swift */,
 				6A5AAF201E1C62F90048B304 /* KeyGenerator.swift */,
 				6B81E73A1E1C5A5100275CF6 /* String+Lowercase.swift */,
 				6B81E7361E1C492600275CF6 /* Struct.swift */,
@@ -209,6 +214,7 @@
 			files = (
 				6B81E7371E1C492600275CF6 /* Struct.swift in Sources */,
 				6B81E73B1E1C5A5100275CF6 /* String+Lowercase.swift in Sources */,
+				6BF988961E1D436300C33153 /* FileHandler.swift in Sources */,
 				6B81E7351E1C488900275CF6 /* StructGenerator.swift in Sources */,
 				6A5AAF211E1C62F90048B304 /* KeyGenerator.swift in Sources */,
 				6B81E72D1E1C46F700275CF6 /* main.swift in Sources */,
@@ -222,6 +228,7 @@
 			files = (
 				6BF9888A1E1C72C000C33153 /* Struct.swift in Sources */,
 				6BF9888B1E1C74DB00C33153 /* SwiftGenerator.swift in Sources */,
+				6BF9889A1E1D531400C33153 /* FileHandler.swift in Sources */,
 				6BF988891E1C724F00C33153 /* StructGenerator.swift in Sources */,
 				6BF988991E1D528B00C33153 /* ArgumentsParser.swift in Sources */,
 				6BF9888F1E1C784C00C33153 /* KeyGenerator.swift in Sources */,
