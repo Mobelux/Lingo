@@ -56,5 +56,17 @@ class LingoTests: XCTestCase {
 
         XCTAssert(swift == expectedSwift, "Generated Swift doesn't match expected")
     }
+
+    func testLocalizedStringParsing() {
+        let url = Bundle(for: LingoTests.self).url(forResource: "Localizeable", withExtension: "strings")!
+        let strings = try! String(contentsOf: url)
+
+        let keys = KeyGenerator.generate(localizationFileContents: strings)
+
+        XCTAssert(keys.count == 3, "Incorrect keys count")
+        XCTAssert(keys[0] == "Lingo.WasHisName", "Incorrect key")
+        XCTAssert(keys[1] == "Lingo.Title", "Incorrect key")
+        XCTAssert(keys[2] == "Flair.Description", "Incorrect key")
+    }
     
 }
