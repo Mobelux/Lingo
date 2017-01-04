@@ -68,5 +68,19 @@ class LingoTests: XCTestCase {
         XCTAssert(keys[1] == "Lingo.Title", "Incorrect key")
         XCTAssert(keys[2] == "Flair.Description", "Incorrect key")
     }
+
+    func testArgumentParsing() {
+        let rawArguments0 = ["--Input", "~/Desktop", "--output", "~/Desktop/output.swift"]
+        let rawArguments1 = ["--output", "~/Desktop/output.swift", "--Input", "~/Desktop"]
+        let rawArguments2 = ["--output", "~/Desktop/output.swift"]
+
+        let arguments0 = ArgumentsParser.parse(arguments: rawArguments0)
+        let arguments1 = ArgumentsParser.parse(arguments: rawArguments1)
+        let arguments2 = ArgumentsParser.parse(arguments: rawArguments2)
+
+        XCTAssertNotNil(arguments0, "We should have arguments")
+        XCTAssertNotNil(arguments1, "We should have arguments")
+        XCTAssertNil(arguments2, "We should not have arguments")
+    }
     
 }
