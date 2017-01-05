@@ -30,7 +30,7 @@ struct SwiftGenerator {
             let lowercasedKey = key.lowercaseFirstCharacter()
             let nsLocalizedKey = "\(aStruct.name).\(key)"
             if let value = keyValues[nsLocalizedKey] {
-                swift += "\n        \\\\\\ \(value)"
+                swift += "\n        /// \(value)"
             }
             swift += "\n        static let \(lowercasedKey) = NSLocalizedString(\"\(nsLocalizedKey)\", comment:\"\")"
         }
