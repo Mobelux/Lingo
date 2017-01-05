@@ -21,14 +21,24 @@ struct KeyGenerator {
         }
     }
     
-    static func generate(localizationFileContents: String) -> [String] {
-        let matched = matches(for: "\\\"\\w+\\.\\w+\\\" = ", in: localizationFileContents)
+    static func generate(localizationFileContents: String) -> [String : String] {
+        let keyValueMatches = matches(for: "\\\"\\w+\\.\\w+\\\"\\s?=\\s?\\\"(.*)\\\"", in: localizationFileContents)
         
-        let results = matched.map {(x: String) -> String in
-            var match = matches(for: "\\w+\\.\\w+", in: x)
-            return match[0]
+        var resultDictionary: [String : String] = [:]
+        keyValueMatches.forEach {
+            let keyResult = matches(for: "(\\w+\\.\\w+)", in: $0)
+            let valueMatched = matches(for: "=[^;]*", in: $0)
+            let valueResult = valueMatched.map {(x: String) -> String in
+                var match = matches(for: "[^=\\s\\\"].*[^\\\";]", in: x)
+                return match[0]
+            }
+            
+            //be sure we have key:value
+            guard keyResult != [] && valueResult != [] else { return }
+            
+            resultDictionary[keyResult[0]] = valueResult[0]
         }
         
-        return results
+        return resultDictionary
     }
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 struct StructGenerator {
-    static func generate(keys: [String]) -> [Struct] {
-        let sortedKeys = keys.sorted()
+    static func generate(keyValues: [String:String]) -> [Struct] {
+        let sortedKeys = Array(keyValues.keys).sorted()
 
         let names = Set(sortedKeys.flatMap({ $0.components(separatedBy: ".").first }))
 

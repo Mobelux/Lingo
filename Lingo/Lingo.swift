@@ -20,9 +20,9 @@ struct Lingo {
             return false
         }
 
-        let keys = KeyGenerator.generate(localizationFileContents: fileData.input)
-        let generatedStructs = StructGenerator.generate(keys: keys)
-        let swift = SwiftGenerator.generate(structs: generatedStructs)
+        let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
+        let generatedStructs = StructGenerator.generate(keyValues: keyValues)
+        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
         do {
             try FileHandler.writeOutput(swift: swift, to: arguments)
             return true
