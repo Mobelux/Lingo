@@ -21,7 +21,7 @@ struct StructGenerator {
                 guard let prefixRange = $0.range(of: prefix) else { return nil }
                 return $0.substring(from: prefixRange.upperBound)
             })
-            return Struct(name: $0, keys: keys)
+            return Struct(name: $0, keys: keys.sorted())
         }).sorted(by: { (lhs, rhs) -> Bool in
             return lhs.name < rhs.name
         })
