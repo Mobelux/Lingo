@@ -4,19 +4,19 @@ import Foundation
 
 struct Lingo {
     struct Flair {
-        \\\ As in pieces of flair from Office Space the movie
+        /// As in pieces of flair from Office Space the movie
         static let description = NSLocalizedString("Flair.Description", comment:"")
     }
 
     struct Lingo {
-        \\\ Lingo
+        /// Lingo
         static let title = NSLocalizedString("Lingo.Title", comment:"")
-        \\\ Oh
+        /// Oh
         static let wasHisName = NSLocalizedString("Lingo.WasHisName", comment:"")
     }
 
     struct MONK {
-        \\\ A networking lib
+        /// A networking lib
         static let title = NSLocalizedString("MONK.Title", comment:"")
     }
 }

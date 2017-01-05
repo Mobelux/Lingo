@@ -34,8 +34,8 @@ class LingoTests: XCTestCase {
     }
 
     func testStructGeneration() {
-        let keys = ["Lingo.Title", "Lingo.Body", "Flair.Title", "MONK.Title"]
-        let structs = StructGenerator.generate(keys: keys)
+        let keyValues = ["Lingo.Title": "Blingo", "Lingo.Body": "Was his name oh!", "Flair.Title": "Straight sketchin'", "MONK.Title": "So Peaceful"]
+        let structs = StructGenerator.generate(keyValues: keyValues)
         XCTAssert(structs.count == 3, "Incorrect # of structs created")
 
         // order is alphabetical
@@ -57,9 +57,10 @@ class LingoTests: XCTestCase {
     }
 
     func testSwiftGeneration() {
-        let keys = ["Lingo.Title", "Lingo.WasHisName", "Flair.Description", "MONK.Title"]
-        let structs = StructGenerator.generate(keys: keys)
-        let swift = SwiftGenerator.generate(structs: structs)
+        let keyValues = ["Lingo.Title": "Lingo", "Lingo.WasHisName": "Oh", "Flair.Description": "As in pieces of flair from Office Space the movie", "MONK.Title": "A networking lib"]
+        
+        let structs = StructGenerator.generate(keyValues: keyValues)
+        let swift = SwiftGenerator.generate(structs: structs, keyValues: keyValues)
         let expectedSwift = try! String(contentsOf: expectedSwiftURL)
 
         XCTAssert(swift == expectedSwift, "Generated Swift doesn't match expected")
@@ -68,12 +69,12 @@ class LingoTests: XCTestCase {
     func testLocalizedStringParsing() {
         let strings = try! String(contentsOf: inputURL)
 
-        let keys = KeyGenerator.generate(localizationFileContents: strings)
+        let keys = Array(KeyGenerator.generate(localizationFileContents: strings).keys).sorted()
 
         XCTAssert(keys.count == 4, "Incorrect keys count")
-        XCTAssert(keys[0] == "Lingo.WasHisName", "Incorrect key")
+        XCTAssert(keys[0] == "Flair.Description", "Incorrect key")
         XCTAssert(keys[1] == "Lingo.Title", "Incorrect key")
-        XCTAssert(keys[2] == "Flair.Description", "Incorrect key")
+        XCTAssert(keys[2] == "Lingo.WasHisName", "Incorrect key")
         XCTAssert(keys[3] == "MONK.Title", "Incorrect key")
     }
 
