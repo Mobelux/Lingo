@@ -9,8 +9,8 @@
 import Foundation
 
 struct StructGenerator {
-    static func generate(keys: [String]) -> [Struct] {
-        let sortedKeys = keys.sorted()
+    static func generate(keyValues: [String:String]) -> [Struct] {
+        let sortedKeys = Array(keyValues.keys).sorted()
 
         let names = Set(sortedKeys.flatMap({ $0.components(separatedBy: ".").first }))
 
@@ -21,7 +21,7 @@ struct StructGenerator {
                 guard let prefixRange = $0.range(of: prefix) else { return nil }
                 return $0.substring(from: prefixRange.upperBound)
             })
-            return Struct(name: $0, keys: keys.sorted())
+            return Struct(name: $0, keys: keys)
         }).sorted(by: { (lhs, rhs) -> Bool in
             return lhs.name < rhs.name
         })
