@@ -57,7 +57,7 @@ class LingoTests: XCTestCase {
     }
 
     func testSwiftGeneration() {
-        let keyValues = ["Lingo.Title": "Lingo", "Lingo.WasHisName": "Oh", "Flair.Description": "As in pieces of flair from Office Space the movie", "MONK.Title": "A networking lib"]
+        let keyValues = ["Lingo.Title": "\"Lingo\"", "Lingo.WasHisName": "\"Oh\"", "Flair.Description": "\"As in pieces of flair from Office Space the movie\"", "MONK.Title": "\"A networking lib\""]
         
         let structs = StructGenerator.generate(keyValues: keyValues)
         let swift = SwiftGenerator.generate(structs: structs, keyValues: keyValues)
