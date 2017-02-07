@@ -43,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		6A5AAF201E1C62F90048B304 /* KeyGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyGenerator.swift; sourceTree = "<group>"; };
+		6B445D071E4A21E100378414 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B81E7291E1C46F700275CF6 /* Lingo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lingo; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B81E72C1E1C46F700275CF6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		6B81E7341E1C488900275CF6 /* StructGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructGenerator.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 				6B81E7361E1C492600275CF6 /* Struct.swift */,
 				6B81E7341E1C488900275CF6 /* StructGenerator.swift */,
 				6B81E7381E1C5A3D00275CF6 /* SwiftGenerator.swift */,
+				6B445D071E4A21E100378414 /* Info.plist */,
 			);
 			path = Lingo;
 			sourceTree = "<group>";
@@ -338,7 +340,10 @@
 		6B81E7311E1C46F700275CF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEVELOPMENT_TEAM = UG892XBK75;
+				INFOPLIST_FILE = "$(SRCROOT)/Lingo/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -347,7 +352,10 @@
 		6B81E7321E1C46F700275CF6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
 				DEVELOPMENT_TEAM = UG892XBK75;
+				INFOPLIST_FILE = "$(SRCROOT)/Lingo/Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
