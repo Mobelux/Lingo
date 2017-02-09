@@ -43,7 +43,7 @@ struct Lingo {
 
 The localized value that a constant represents is in the comments for each constant, so you can easily tell what a constant will produce just by Option-Clicking on it.
 
-In your `Localizable.strings` file, you should namespace your keys in the format `<SomeGrouping>.<Key>`. When you do this, all keys with the same `SomeGrouping` will be put into a struct together. The main restriction is that you should choose grouping & key values that can be represented in Swift as a struct name and variable name. Currently Lingo doesn't sanatize names before generating the Swift (PRs welcome). Since everything is done at compile time, you will know immeadiately if something didn't work.
+In your `Localizable.strings` file, you need to namespace your keys in the format `<SomeGrouping>.<Key>`. When you do this, all keys with the same `SomeGrouping` will be put into a struct together. The main restriction is that you should choose grouping & key values that can be represented in Swift as a struct name and variable name. Currently Lingo doesn't sanatize names before generating the Swift (PRs welcome). Since everything is done at compile time, you will know immeadiately if something didn't work.
 
 # Installation
 Download the [latest release](https://github.com/Mobelux/Lingo/releases/latest), or grab the source and build it your self. While you can just install the Lingo CLI tool locally, it's better if all develpers & CI that access your repo have access to it. So we recommend making a folder in your repo for shared tooling, and placing Lingo in there.
