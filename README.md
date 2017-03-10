@@ -1,7 +1,7 @@
 # Lingo
 Swift code generation for Localizable.strings files
 
-Xcode has great support for localizing text in apps, however it is easy to have a typo prevent your localized text from being shown. What's worse is that you will not get a compile time error. You have to ready all the text in your app at runtime to verify if everything worked correctly.
+Xcode has great support for localizing text in apps. However, one little typo can easily prevent your localized text from being shown. What's worse—you won't get a compile time error. You have to ready all the text in your app at runtime to verify if everything worked correctly.
 
 *Localizable.strings*
 
