@@ -6,7 +6,7 @@ This document contains information and guidelines about contributing to this pro
 
 * [Reporting Issues](#reporting-issues)
 * [Submitting changes](#submitting-changes)
-* [Developers Certificate of Origin](#developers-certificate_of_origin)
+* [Developers Certificate of Origin](#developers-certificate-of-origin)
 * [Code of Conduct](#code-of-conduct)
 
 ## Reporting Issues
