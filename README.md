@@ -51,4 +51,4 @@ Download the [latest release](https://github.com/Mobelux/Lingo/releases/latest),
 Open your app in Xcode, select the app's target, and go to `Build Phases`. Tap the +  at the top left of the build phases and choose `New Run Script Phase`. Give the script a descriptive name like `Lingo: Generate structs from Localizable.strings`, then drag the phase so that it is somewhere before `Compile Sources (x items)`. Inside the main script area you should put something like `./<Path to Lingo>/Lingo --input Hub/en.lproj/Localizable.strings --output Hub/Lingo.swift`, where you should use the `Localizable.strings` that you use for your development language. 
 
 # Contributing
-We welcome pull requests.
+Check out our [contribution guide](https://github.com/Mobelux/Lingo/master/CONTRIBUTING.md)
