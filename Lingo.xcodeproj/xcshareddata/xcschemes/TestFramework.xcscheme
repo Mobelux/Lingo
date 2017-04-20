@@ -8,15 +8,15 @@
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BF9887F1E1C711700C33153"
-               BuildableName = "LingoTests.xctest"
-               BlueprintName = "LingoTests"
+               BlueprintIdentifier = "6B1C8C4F1EA7DA7200A10914"
+               BuildableName = "TestFramework.framework"
+               BlueprintName = "TestFramework"
                ReferencedContainer = "container:Lingo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,16 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6BF9887F1E1C711700C33153"
-               BuildableName = "LingoTests.xctest"
-               BlueprintName = "LingoTests"
-               ReferencedContainer = "container:Lingo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "6B1C8C571EA7DA7300A10914"
                BuildableName = "TestFrameworkTests.xctest"
                BlueprintName = "TestFrameworkTests"
@@ -49,6 +39,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6B1C8C4F1EA7DA7200A10914"
+            BuildableName = "TestFramework.framework"
+            BlueprintName = "TestFramework"
+            ReferencedContainer = "container:Lingo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -62,6 +61,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6B1C8C4F1EA7DA7200A10914"
+            BuildableName = "TestFramework.framework"
+            BlueprintName = "TestFramework"
+            ReferencedContainer = "container:Lingo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -71,6 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "6B1C8C4F1EA7DA7200A10914"
+            BuildableName = "TestFramework.framework"
+            BlueprintName = "TestFramework"
+            ReferencedContainer = "container:Lingo.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

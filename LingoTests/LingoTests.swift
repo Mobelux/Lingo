@@ -11,7 +11,7 @@ import XCTest
 class LingoTests: XCTestCase {
 
     let inputURL = Bundle(for: LingoTests.self).url(forResource: "Localizeable", withExtension: "strings")!
-    let expectedSwiftURL = Bundle(for: LingoTests.self).url(forResource: "generated_swift", withExtension: "txt")!
+    let expectedSwiftURL = Bundle(for: LingoTests.self).url(forResource: "Expected", withExtension: "txt")!
     let outputURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("output.swift")
 
     override func tearDown() {

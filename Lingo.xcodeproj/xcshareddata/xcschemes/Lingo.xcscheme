@@ -39,6 +39,16 @@
                ReferencedContainer = "container:Lingo.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6B1C8C571EA7DA7300A10914"
+               BuildableName = "TestFrameworkTests.xctest"
+               BlueprintName = "TestFrameworkTests"
+               ReferencedContainer = "container:Lingo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
