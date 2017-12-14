@@ -54,7 +54,7 @@ struct SwiftGenerator {
             if let value = keyValues[nsLocalizedKey] {
                 swift += "\n        /// \(value)"
             }
-            swift += "\n        static let \(lowercasedKey) = NSLocalizedString(\"\(nsLocalizedKey)\", bundle: BundleLocator.bundle, comment:\"\")"
+            swift += "\n        static let \(lowercasedKey) = NSLocalizedString(\"\(nsLocalizedKey)\", bundle: BundleLocator.bundle, comment: \"\")"
         }
         swift += "\n    }"
         return swift
