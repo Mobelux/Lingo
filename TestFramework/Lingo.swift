@@ -9,6 +9,6 @@ private class BundleLocator {
 struct Lingo {
     struct Test {
         /// "TestFramework"
-        static let title = NSLocalizedString("Test.title", bundle: BundleLocator.bundle, comment:"")
+        static let title = NSLocalizedString("Test.title", bundle: BundleLocator.bundle, comment: "")
     }
 }
