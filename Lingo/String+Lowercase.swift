@@ -30,6 +30,6 @@ import Foundation
 extension String {
     func lowercaseFirstCharacter() -> String {
         let firstIndex = index(after: startIndex)
-        return substring(to: firstIndex).lowercased() + substring(from: firstIndex)
+		return self[..<firstIndex].lowercased() + self[firstIndex...]
     }
 }

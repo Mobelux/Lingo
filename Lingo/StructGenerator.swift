@@ -38,7 +38,7 @@ struct StructGenerator {
             let allKeysWithNamePrefix = sortedKeys.filter({ return $0.hasPrefix(prefix) })
             let keys: [String] = allKeysWithNamePrefix.flatMap({
                 guard let prefixRange = $0.range(of: prefix) else { return nil }
-                return $0.substring(from: prefixRange.upperBound)
+				return String($0[prefixRange.upperBound...])
             })
             return Struct(name: $0, keys: keys.sorted())
         }).sorted(by: { (lhs, rhs) -> Bool in
