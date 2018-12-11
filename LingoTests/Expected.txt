@@ -9,18 +9,18 @@ private class BundleLocator {
 struct Lingo {
     struct Flair {
         /// "As in pieces of flair from Office Space the movie"
-        static let description = NSLocalizedString("Flair.Description", bundle: BundleLocator.bundle, comment:"")
+        static let description = NSLocalizedString("Flair.Description", bundle: BundleLocator.bundle, comment: "")
     }
 
     struct Lingo {
         /// "Lingo"
-        static let title = NSLocalizedString("Lingo.Title", bundle: BundleLocator.bundle, comment:"")
+        static let title = NSLocalizedString("Lingo.Title", bundle: BundleLocator.bundle, comment: "")
         /// "Oh"
-        static let wasHisName = NSLocalizedString("Lingo.WasHisName", bundle: BundleLocator.bundle, comment:"")
+        static let wasHisName = NSLocalizedString("Lingo.WasHisName", bundle: BundleLocator.bundle, comment: "")
     }
 
     struct MONK {
         /// "A networking lib"
-        static let title = NSLocalizedString("MONK.Title", bundle: BundleLocator.bundle, comment:"")
+        static let title = NSLocalizedString("MONK.Title", bundle: BundleLocator.bundle, comment: "")
     }
 }
