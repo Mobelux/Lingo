@@ -1,5 +1,5 @@
 //
-//  String+Lowercase.swift
+//  main.swift
 //  Lingo
 //
 //  MIT License
@@ -26,10 +26,7 @@
 //
 
 import Foundation
+import LingoCore
 
-extension String {
-    func lowercaseFirstCharacter() -> String {
-        let firstIndex = index(after: startIndex)
-		return self[..<firstIndex].lowercased() + self[firstIndex...]
-    }
-}
+let success = Lingo.run(withArguments: CommandLine.arguments)
+exit(success ? 0 : 1)

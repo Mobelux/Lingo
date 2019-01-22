@@ -1,5 +1,5 @@
 //
-//  Lingo.swift
+//  StructGenerator.swift
 //  Lingo
 //
 //  MIT License
@@ -27,27 +27,22 @@
 
 import Foundation
 
-struct Lingo {
-    static func run(withArguments rawArguments: [String]) -> Bool {
-        guard let arguments = ArgumentsParser.parse(arguments: rawArguments) else {
-            print("Usage: --input <path to Localizable.strings file> --output <path including file name to write Swift to>")
-            return false
-        }
+public struct StructGenerator {
+    public static func generate(keyValues: [String:String]) -> [Struct] {
+        let sortedKeys = Array(keyValues.keys).sorted()
 
-        guard let fileData = FileHandler.readFiles(from: arguments) else {
-            print("Couldn't read files. Did you type your arguments incorrectly?")
-            return false
-        }
+        let names = Set(sortedKeys.compactMap({ $0.components(separatedBy: ".").first }))
 
-        let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
-        let generatedStructs = StructGenerator.generate(keyValues: keyValues)
-        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
-        do {
-            try FileHandler.writeOutput(swift: swift, to: arguments)
-            return true
-        } catch let error {
-            print("Error writing output: \(error.localizedDescription)")
-            return false
-        }
+        return names.map({
+            let prefix = "\($0)."
+            let allKeysWithNamePrefix = sortedKeys.filter({ return $0.hasPrefix(prefix) })
+            let keys: [String] = allKeysWithNamePrefix.compactMap({
+                guard let prefixRange = $0.range(of: prefix) else { return nil }
+				return String($0[prefixRange.upperBound...])
+            })
+            return Struct(name: $0, keys: keys.sorted())
+        }).sorted(by: { (lhs, rhs) -> Bool in
+            return lhs.name < rhs.name
+        })
     }
 }

@@ -27,7 +27,7 @@
 
 import Foundation
 
-struct Struct {
-    let name: String
-    let keys: [String]
+public struct Struct {
+    public let name: String
+    public let keys: [String]
 }

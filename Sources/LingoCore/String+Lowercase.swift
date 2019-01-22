@@ -1,6 +1,6 @@
 //
-//  TestFrameworkTests.swift
-//  TestFrameworkTests
+//  String+Lowercase.swift
+//  Lingo
 //
 //  MIT License
 //
@@ -25,14 +25,11 @@
 //  THE SOFTWARE.
 //
 
-import XCTest
-@testable import TestFramework
+import Foundation
 
-class TestFrameworkTests: XCTestCase {
-    
-    func testLingoBundle() {
-        XCTAssert(Lingo.Test.title == "TestFrameworkTests", "Test bundle localized string incorrect")
-        XCTAssert(TestFramework.Lingo.Test.title == "TestFramework", "Framework bundle localized string incorrect")
+public extension String {
+    func lowercaseFirstCharacter() -> String {
+        let firstIndex = index(after: startIndex)
+		return self[..<firstIndex].lowercased() + self[firstIndex...]
     }
-    
 }
