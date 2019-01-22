@@ -8,12 +8,11 @@ let package = Package(
     targets: [
         .target(
             name: "Lingo",
-            dependencies: ["LingoCore"]),
+            dependencies: ["LingoCore"])
         .target(name: "LingoCore",
-                dependencies: []),
+                dependencies: [])
         .testTarget(
             name: "LingoTests",
-            dependencies: ["LingoCore"],
-            sources: ["LingoTests.swift", "Expected.txt", "Localizeable.strings"]),
+            dependencies: ["LingoCore"])
     ]
 )
