@@ -5,12 +5,16 @@ import PackageDescription
 
 let package = Package(
     name: "Lingo",
+    products: [
+        .executable(name: "lingo", targets: ["lingo"])
+    ],
     targets: [
         .target(
-            name: "Lingo",
-            dependencies: ["LingoCore"])
-        .target(name: "LingoCore",
-                dependencies: [])
+            name: "lingo",
+            dependencies: ["LingoCore"]),
+        .target(
+            name: "LingoCore",
+            dependencies: []),
         .testTarget(
             name: "LingoTests",
             dependencies: ["LingoCore"])
