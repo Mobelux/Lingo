@@ -126,14 +126,19 @@ class LingoTests: XCTestCase {
         let url = try! LingoTests.write(LingoTests.localizableStrings, toTemp: "input")
         let arguments = ["--input", url.path, "--output", outputURL.path]
         measure {
-            let success = Lingo.run(withArguments: arguments)
-            XCTAssert(success, "Did not succeed")
+            do {
+                try Lingo.run(withArguments: arguments)
 
-            let expectedSwift = LingoTests.expectedText
-            let generatedSwift = try? String(contentsOf: self.outputURL)
-            XCTAssertNotNil(generatedSwift, "Didn't generate Swift")
-            if let generatedSwift = generatedSwift {
-                XCTAssert(generatedSwift == expectedSwift, "Generated Swift doesn't match expected")
+                let expectedSwift = LingoTests.expectedText
+                let generatedSwift = try? String(contentsOf: self.outputURL)
+                XCTAssertNotNil(generatedSwift, "Didn't generate Swift")
+                if let generatedSwift = generatedSwift {
+                    XCTAssert(generatedSwift == expectedSwift, "Generated Swift doesn't match expected")
+                }
+
+                UserDefaults.standard.removeObject(forKey: url.absoluteString.md5)
+            } catch {
+                XCTAssert(false, error.localizedDescription)
             }
         }
     }

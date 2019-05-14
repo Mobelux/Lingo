@@ -28,5 +28,4 @@
 import Foundation
 import LingoCore
 
-let success = Lingo.run(withArguments: CommandLine.arguments)
-exit(success ? 0 : 1)
+try Lingo.run(withArguments: CommandLine.arguments)

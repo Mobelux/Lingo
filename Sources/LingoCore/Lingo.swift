@@ -28,26 +28,36 @@
 import Foundation
 
 public struct Lingo {
-    public static func run(withArguments rawArguments: [String]) -> Bool {
+    public static func run(withArguments rawArguments: [String]) throws {
         guard let arguments = ArgumentsParser.parse(arguments: rawArguments) else {
-            print("Usage: --input <path to Localizable.strings file> --output <path including file name to write Swift to>")
-            return false
+            throw LingoError.custom("Usage: --input <path to Localizable.strings file> --output <path including file name to write Swift to>")
         }
 
         guard let fileData = FileHandler.readFiles(from: arguments) else {
-            print("Couldn't read files. Did you type your arguments incorrectly?")
-            return false
+            throw LingoError.custom("Couldn't read files. Did you type your arguments incorrectly?")
         }
 
-        let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
-        let generatedStructs = StructGenerator.generate(keyValues: keyValues)
-        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
-        do {
+        let md5Key = arguments.inputURL.absoluteString.md5
+        let localizationMd5 = fileData.input.md5
+
+        defer {
+            UserDefaults.standard.set(localizationMd5, forKey: md5Key)
+        }
+
+        let generate = {
+            let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
+            let generatedStructs = StructGenerator.generate(keyValues: keyValues)
+            let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
+
             try FileHandler.writeOutput(swift: swift, to: arguments)
-            return true
-        } catch let error {
-            print("Error writing output: \(error.localizedDescription)")
-            return false
+        }
+
+        if let previousMd5 = UserDefaults.standard.string(forKey: md5Key) {
+            if previousMd5 != localizationMd5 {
+                try generate()
+            }
+        } else {
+            try generate()
         }
     }
 }
