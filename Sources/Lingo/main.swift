@@ -28,4 +28,8 @@
 import Foundation
 import LingoCore
 
-try Lingo.run(withArguments: CommandLine.arguments)
+do {
+    try Lingo.run(withArguments: CommandLine.arguments)
+} catch {
+    fatalError(error.localizedDescription)
+}

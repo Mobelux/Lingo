@@ -21,7 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		3F2F4DA3228B581B009D23CC /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F4DA2228B581B009D23CC /* String+md5.swift */; };
 		3F2F4DA5228B60BC009D23CC /* LingoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F4DA4228B60BC009D23CC /* LingoError.swift */; };
 		OBJ_32 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* main.swift */; };
 		OBJ_34 /* LingoCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Lingo::LingoCore::Product" /* LingoCore.framework */; };
@@ -64,7 +63,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F2F4DA2228B581B009D23CC /* String+md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		3F2F4DA4228B60BC009D23CC /* LingoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LingoError.swift; sourceTree = "<group>"; };
 		"Lingo::Lingo::Product" /* Lingo */ = {isa = PBXFileReference; lastKnownFileType = text; path = Lingo; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Lingo::LingoCore::Product" /* LingoCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = LingoCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,7 +145,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -155,7 +153,6 @@
 				OBJ_19 /* Tests */,
 				OBJ_23 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -175,7 +172,6 @@
 				OBJ_11 /* KeyGenerator.swift */,
 				OBJ_12 /* Lingo.swift */,
 				OBJ_13 /* String+Lowercase.swift */,
-				3F2F4DA2228B581B009D23CC /* String+md5.swift */,
 				OBJ_14 /* Struct.swift */,
 				OBJ_15 /* StructGenerator.swift */,
 				OBJ_16 /* SwiftGenerator.swift */,
@@ -268,7 +264,7 @@
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_23 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -301,7 +297,6 @@
 				OBJ_43 /* KeyGenerator.swift in Sources */,
 				OBJ_44 /* Lingo.swift in Sources */,
 				OBJ_45 /* String+Lowercase.swift in Sources */,
-				3F2F4DA3228B581B009D23CC /* String+md5.swift in Sources */,
 				OBJ_46 /* Struct.swift in Sources */,
 				OBJ_47 /* StructGenerator.swift in Sources */,
 				OBJ_48 /* SwiftGenerator.swift in Sources */,

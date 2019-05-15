@@ -37,27 +37,10 @@ public struct Lingo {
             throw LingoError.custom("Couldn't read files. Did you type your arguments incorrectly?")
         }
 
-        let md5Key = arguments.inputURL.absoluteString.md5
-        let localizationMd5 = fileData.input.md5
+        let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
+        let generatedStructs = StructGenerator.generate(keyValues: keyValues)
+        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
 
-        defer {
-            UserDefaults.standard.set(localizationMd5, forKey: md5Key)
-        }
-
-        let generate = {
-            let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
-            let generatedStructs = StructGenerator.generate(keyValues: keyValues)
-            let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
-
-            try FileHandler.writeOutput(swift: swift, to: arguments)
-        }
-
-        if let previousMd5 = UserDefaults.standard.string(forKey: md5Key) {
-            if previousMd5 != localizationMd5 {
-                try generate()
-            }
-        } else {
-            try generate()
-        }
+        try FileHandler.writeOutput(swift: swift, to: arguments)
     }
 }
