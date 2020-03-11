@@ -48,7 +48,7 @@ struct KeyGenerator {
             let keyResult = matches(for: "(\\w+\\.\\w+)", in: $0)
             let valueMatched = matches(for: "=[^;]*", in: $0)
             let valueResult = valueMatched.map {(x: String) -> String in
-                var match = matches(for: "\\\"([^\\\"]|(?<=\\\\)\\\")*\\\"", in: x)
+                let match = matches(for: "\\\"([^\\\"]|(?<=\\\\)\\\")*\\\"", in: x)
                 return match[0]
             }
             

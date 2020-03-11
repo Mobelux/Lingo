@@ -135,8 +135,6 @@ class LingoTests: XCTestCase {
                 if let generatedSwift = generatedSwift {
                     XCTAssert(generatedSwift == expectedSwift, "Generated Swift doesn't match expected")
                 }
-
-                UserDefaults.standard.removeObject(forKey: url.absoluteString.md5)
             } catch {
                 XCTAssert(false, error.localizedDescription)
             }

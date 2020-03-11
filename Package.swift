@@ -1,16 +1,19 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "Lingo",
+    platforms: [
+        .macOS(.v10_13)
+    ],
     products: [
-        .executable(name: "lingo", targets: ["lingo"])
+        .executable(name: "lingo", targets: ["Lingo"])
     ],
     targets: [
         .target(
-            name: "lingo",
+            name: "Lingo",
             dependencies: ["LingoCore"]),
         .target(
             name: "LingoCore",

@@ -35,8 +35,8 @@ struct Arguments {
 struct ArgumentsParser {
     static func parse(arguments: [String]) -> Arguments? {
         let lowercaseArguments = arguments.map({ $0.lowercased() })
-        guard let inputCommandIndex = lowercaseArguments.index(of: "--input"),
-            let outputCommandIndex = lowercaseArguments.index(of: "--output"),
+        guard let inputCommandIndex = lowercaseArguments.firstIndex(of: "--input"),
+            let outputCommandIndex = lowercaseArguments.firstIndex(of: "--output"),
             inputCommandIndex <= arguments.count - 2, outputCommandIndex <= arguments.count - 2,
             inputCommandIndex + 1 != outputCommandIndex, outputCommandIndex + 1 != inputCommandIndex else { return nil }
 
