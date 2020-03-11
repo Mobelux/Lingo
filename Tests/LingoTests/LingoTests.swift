@@ -26,7 +26,7 @@
 //
 
 import XCTest
-@testable import LingoCore
+@testable import Core
 
 class LingoTests: XCTestCase {
     let outputURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("output.swift")
@@ -94,29 +94,13 @@ class LingoTests: XCTestCase {
         XCTAssert(keys[3] == "MONK.Title", "Incorrect key")
     }
 
-    func testArgumentParsing() {
-        let rawArguments0 = ["--Input", "~/Desktop", "--output", "~/Desktop/output.swift"]
-        let rawArguments1 = ["--output", "~/Desktop/output.swift", "--Input", "~/Desktop"]
-        let rawArguments2 = ["--output", "~/Desktop/output.swift"]
-
-        let arguments0 = ArgumentsParser.parse(arguments: rawArguments0)
-        let arguments1 = ArgumentsParser.parse(arguments: rawArguments1)
-        let arguments2 = ArgumentsParser.parse(arguments: rawArguments2)
-
-        XCTAssertNotNil(arguments0, "We should have arguments")
-        XCTAssertNotNil(arguments1, "We should have arguments")
-        XCTAssertNil(arguments2, "We should not have arguments")
-    }
-
     func testFileHandling() {
         do {
-            let url = try LingoTests.write(LingoTests.localizableStrings, toTemp: "input")
-
-            let arguments = Arguments(inputURL: url, outputURL: outputURL)
-            let fileData = FileHandler.readFiles(from: arguments)
+            let inputURL = try LingoTests.write(LingoTests.localizableStrings, toTemp: "input")
+            let fileData = FileHandler.readFiles(inputPath: inputURL.path, outputPath: outputURL.path)
             XCTAssertNotNil(fileData, "Couldn't read files")
 
-            try FileHandler.writeOutput(swift: LingoTests.expectedText, to: arguments)
+            try FileHandler.writeOutput(swift: LingoTests.expectedText, to: outputURL.path)
         } catch let error {
             XCTAssert(false, error.localizedDescription)
         }
@@ -124,10 +108,9 @@ class LingoTests: XCTestCase {
 
     func testEverything() {
         let url = try! LingoTests.write(LingoTests.localizableStrings, toTemp: "input")
-        let arguments = ["--input", url.path, "--output", outputURL.path]
         measure {
             do {
-                try Lingo.run(withArguments: arguments)
+                try LingoCore.run(input: url.path, output: outputURL.path)
 
                 let expectedSwift = LingoTests.expectedText
                 let generatedSwift = try? String(contentsOf: self.outputURL)

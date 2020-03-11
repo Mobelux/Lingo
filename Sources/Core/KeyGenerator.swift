@@ -1,6 +1,6 @@
 //
 //  KeyGenerator.swift
-//  Lingo
+//  LingoCore
 //
 //  MIT License
 //

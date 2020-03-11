@@ -1,6 +1,6 @@
 //
-//  String+Lowercase.swift
-//  Lingo
+//  Struct.swift
+//  LingoCore
 //
 //  MIT License
 //
@@ -27,9 +27,7 @@
 
 import Foundation
 
-public extension String {
-    func lowercaseFirstCharacter() -> String {
-        let firstIndex = index(after: startIndex)
-		return self[..<firstIndex].lowercased() + self[firstIndex...]
-    }
+public struct Struct {
+    public let name: String
+    public let keys: [String]
 }

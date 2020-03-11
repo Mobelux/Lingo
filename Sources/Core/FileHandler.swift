@@ -1,6 +1,6 @@
 //
-//  ArgumentsParser.swift
-//  Lingo
+//  FileHandler.swift
+//  LingoCore
 //
 //  MIT License
 //
@@ -27,24 +27,33 @@
 
 import Foundation
 
-struct Arguments {
-    let inputURL: URL
-    let outputURL: URL
+struct FileData {
+    let input: String
+    let output: String?
 }
 
-struct ArgumentsParser {
-    static func parse(arguments: [String]) -> Arguments? {
-        let lowercaseArguments = arguments.map({ $0.lowercased() })
-        guard let inputCommandIndex = lowercaseArguments.firstIndex(of: "--input"),
-            let outputCommandIndex = lowercaseArguments.firstIndex(of: "--output"),
-            inputCommandIndex <= arguments.count - 2, outputCommandIndex <= arguments.count - 2,
-            inputCommandIndex + 1 != outputCommandIndex, outputCommandIndex + 1 != inputCommandIndex else { return nil }
+struct FileHandler {
+    static func readFiles(inputPath: String, outputPath: String) -> FileData? {
+        let outputFileData = try? String(contentsOfFile: outputPath)
+        if let inputFileData = try? String(contentsOfFile: inputPath) {
+            return FileData(input: inputFileData, output: outputFileData)
+        } else {
+            return nil
+        }
+    }
 
-        let inputURLString = arguments[inputCommandIndex + 1]
-        let outputURLString = arguments[outputCommandIndex + 1]
+    static func writeOutput(swift: String, to outputPath: String) throws {
+        let doWrite = {
+            try swift.write(toFile: outputPath, atomically: true, encoding: .utf8)
+        }
 
-        let inputURL = URL(fileURLWithPath: inputURLString)
-        let outputURL = URL(fileURLWithPath: outputURLString)
-        return Arguments(inputURL: inputURL, outputURL: outputURL)
+        if let existingSwift = try? String(contentsOfFile: outputPath)  {
+            // Only write if there was a change
+            if existingSwift != swift {
+                try doWrite()
+            }
+        } else {
+            try doWrite()
+        }
     }
 }

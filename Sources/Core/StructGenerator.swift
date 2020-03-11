@@ -1,6 +1,6 @@
 //
-//  Struct.swift
-//  Lingo
+//  StructGenerator.swift
+//  LingoCore
 //
 //  MIT License
 //
@@ -27,7 +27,22 @@
 
 import Foundation
 
-public struct Struct {
-    public let name: String
-    public let keys: [String]
+public struct StructGenerator {
+    public static func generate(keyValues: [String:String]) -> [Struct] {
+        let sortedKeys = Array(keyValues.keys).sorted()
+
+        let names = Set(sortedKeys.compactMap({ $0.components(separatedBy: ".").first }))
+
+        return names.map({
+            let prefix = "\($0)."
+            let allKeysWithNamePrefix = sortedKeys.filter({ return $0.hasPrefix(prefix) })
+            let keys: [String] = allKeysWithNamePrefix.compactMap({
+                guard let prefixRange = $0.range(of: prefix) else { return nil }
+				return String($0[prefixRange.upperBound...])
+            })
+            return Struct(name: $0, keys: keys.sorted())
+        }).sorted(by: { (lhs, rhs) -> Bool in
+            return lhs.name < rhs.name
+        })
+    }
 }

@@ -1,6 +1,6 @@
 //
-//  Lingo.swift
-//  Lingo
+//  String+Lowercase.swift
+//  LingoCore
 //
 //  MIT License
 //
@@ -27,20 +27,9 @@
 
 import Foundation
 
-public struct Lingo {
-    public static func run(withArguments rawArguments: [String]) throws {
-        guard let arguments = ArgumentsParser.parse(arguments: rawArguments) else {
-            throw LingoError.custom("Usage: --input <path to Localizable.strings file> --output <path including file name to write Swift to>")
-        }
-
-        guard let fileData = FileHandler.readFiles(from: arguments) else {
-            throw LingoError.custom("Couldn't read files. Did you type your arguments incorrectly?")
-        }
-
-        let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
-        let generatedStructs = StructGenerator.generate(keyValues: keyValues)
-        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
-
-        try FileHandler.writeOutput(swift: swift, to: arguments)
+public extension String {
+    func lowercaseFirstCharacter() -> String {
+        let firstIndex = index(after: startIndex)
+		return self[..<firstIndex].lowercased() + self[firstIndex...]
     }
 }

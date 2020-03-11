@@ -1,6 +1,6 @@
 //
 //  main.swift
-//  Lingo
+//  LingoCore
 //
 //  MIT License
 //
@@ -25,11 +25,17 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-import LingoCore
+import ArgumentParser
+import Core
 
-do {
-    try Lingo.run(withArguments: CommandLine.arguments)
-} catch {
-    fatalError(error.localizedDescription)
+struct Lingo: ParsableCommand {
+    @Argument(help: "path to Localizable.strings file")
+    var input: String
+
+    @Argument(help: "path including file name to write Swift to")
+    var output: String
+
+    func run() throws {
+        try LingoCore.run(input: input, output: output)
+    }
 }

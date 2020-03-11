@@ -11,15 +11,19 @@ let package = Package(
     products: [
         .executable(name: "lingo", targets: ["Lingo"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "0.0.1")),
+    ],
     targets: [
         .target(
             name: "Lingo",
-            dependencies: ["LingoCore"]),
+            dependencies: ["Core",
+                           .product(name: "ArgumentParser", package: "swift-argument-parser")]),
         .target(
-            name: "LingoCore",
+            name: "Core",
             dependencies: []),
         .testTarget(
             name: "LingoTests",
-            dependencies: ["LingoCore"])
+            dependencies: ["Core"])
     ]
 )

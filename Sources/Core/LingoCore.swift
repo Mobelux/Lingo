@@ -1,10 +1,10 @@
 //
-//  LingoError.swift
+//  LingoCore.swift
 //  LingoCore
 //
 //  MIT License
 //
-//  Copyright (c) 2019 Mobelux
+//  Copyright (c) 2017 Mobelux
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,20 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+//
 
 import Foundation
 
-enum LingoError: LocalizedError {
-    case custom(String)
-
-    var errorDescription: String? {
-        switch self {
-        case .custom(let message):
-            return message
+public struct LingoCore {
+    public static func run(input: String, output: String) throws {
+        guard let fileData = FileHandler.readFiles(inputPath: input, outputPath: output) else {
+            throw LingoError.custom("Couldn't read files. Did you type your arguments incorrectly?")
         }
+
+        let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
+        let generatedStructs = StructGenerator.generate(keyValues: keyValues)
+        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
+
+        try FileHandler.writeOutput(swift: swift, to: output)
     }
 }

@@ -1,6 +1,6 @@
 //
 //  SwiftGenerator.swift
-//  Lingo
+//  LingoCore
 //
 //  MIT License
 //
