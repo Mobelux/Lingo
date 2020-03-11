@@ -29,13 +29,15 @@ import ArgumentParser
 import Core
 
 struct Lingo: ParsableCommand {
-    @Argument(help: "path to Localizable.strings file")
+    @Option(help: "path to Localizable.strings file")
     var input: String
 
-    @Argument(help: "path including file name to write Swift to")
+    @Option(help: "path including file name to write Swift to")
     var output: String
 
     func run() throws {
         try LingoCore.run(input: input, output: output)
     }
 }
+
+Lingo.main()
