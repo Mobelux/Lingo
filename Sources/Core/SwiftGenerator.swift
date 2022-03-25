@@ -34,7 +34,7 @@ public struct SwiftGenerator {
         swift += "private class BundleLocator {\n"
         swift += "    static let bundle: Bundle = Bundle(for: BundleLocator.self)\n"
         swift += "}\n\n"
-        swift += "struct Lingo {\n"
+        swift += "public struct Lingo {\n"
         for (index, value) in structs.enumerated() {
             swift += swiftFor(struct: value, keyValues: keyValues)
             swift += "\n"
@@ -47,14 +47,14 @@ public struct SwiftGenerator {
     }
 
     private static func swiftFor(struct aStruct: Struct, keyValues: [String:String]) -> String {
-        var swift = "    struct \(aStruct.name) {"
+        var swift = "    public struct \(aStruct.name) {"
         for key in aStruct.keys {
             let lowercasedKey = key.lowercaseFirstCharacter()
             let nsLocalizedKey = "\(aStruct.name).\(key)"
             if let value = keyValues[nsLocalizedKey] {
                 swift += "\n        /// \(value)"
             }
-            swift += "\n        static let \(lowercasedKey) = NSLocalizedString(\"\(nsLocalizedKey)\", bundle: BundleLocator.bundle, comment: \"\")"
+            swift += "\n        public static let \(lowercasedKey) = NSLocalizedString(\"\(nsLocalizedKey)\", bundle: BundleLocator.bundle, comment: \"\")"
         }
         swift += "\n    }"
         return swift
