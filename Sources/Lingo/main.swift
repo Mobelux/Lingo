@@ -35,8 +35,16 @@ struct Lingo: ParsableCommand {
     @Option(help: "path including file name to write Swift to")
     var output: String
 
+    @Option(
+        help: ArgumentHelp(
+            "The name of the SPM package which `Lingo.swift` will belong to.",
+            discussion: "If you are using SwiftUI and your strings file (and Lingo.swift) belong to a Swift package, specify that Swift package's name with this option. Without it SwiftUI previews will fatal error.",
+            valueName: "package-name")
+    )
+    var packageName: String?
+
     func run() throws {
-        try LingoCore.run(input: input, output: output)
+        try LingoCore.run(input: input, output: output, packageName: packageName)
     }
 }
 
