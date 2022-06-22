@@ -28,14 +28,14 @@
 import Foundation
 
 public struct LingoCore {
-    public static func run(input: String, output: String) throws {
+    public static func run(input: String, output: String, packageName: String?) throws {
         guard let fileData = FileHandler.readFiles(inputPath: input, outputPath: output) else {
             throw LingoError.custom("Couldn't read files. Did you type your arguments incorrectly?")
         }
 
         let keyValues = KeyGenerator.generate(localizationFileContents: fileData.input)
         let generatedStructs = StructGenerator.generate(keyValues: keyValues)
-        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues)
+        let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues, packageName: packageName)
 
         try FileHandler.writeOutput(swift: swift, to: output)
     }
