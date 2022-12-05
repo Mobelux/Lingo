@@ -34,11 +34,21 @@ struct LingoPlugin: BuildToolPlugin {
         context: PackagePlugin.PluginContext,
         target: PackagePlugin.Target
     ) async throws -> [PackagePlugin.Command] {
-        // ...
+        guard
+            let sourceTarget = target as? SourceModuleTarget,
+            let inputFilePath = sourceTarget.sourceFiles(withSuffix: "strings")
+                .map(\.path)
+                .first else {
+            return []
+        }
 
-        let lingo = try context.tool(named: "lingo")
-        var arguments: [String] = [
-            // ...
+        let outputDir = context.pluginWorkDirectory.appending("GeneratedSources")
+        let outputFile = outputDir.appending("Lingo.swift")
+
+        let lingo = try context.tool(named: "Lingo")
+        let arguments: [String] = [
+            "--input", inputFilePath.string,
+            "--output", outputFile.string
         ]
 
         return [
@@ -46,8 +56,8 @@ struct LingoPlugin: BuildToolPlugin {
                 displayName: "Lingo",
                 executable: lingo.path,
                 arguments: arguments,
-                inputFiles: [],
-                outputFiles: [context.pluginWorkDirectory]
+                inputFiles: [inputFilePath],
+                outputFiles: [outputFile]
             )
         ]
     }
