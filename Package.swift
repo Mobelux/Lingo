@@ -16,7 +16,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "1.0.0")),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "Lingo",
             dependencies: ["Core",
                            .product(name: "ArgumentParser", package: "swift-argument-parser")]),
@@ -29,6 +29,6 @@ let package = Package(
         .plugin(
             name: "LingoPlugin",
             capability: .buildTool(),
-            dependencies: ["Core"])
+            dependencies: ["Lingo"])
     ]
 )
