@@ -34,7 +34,7 @@ public struct SwiftGenerator {
         swift += "private class BundleLocator {\n"
         swift += "    static let bundle: Bundle = {\n"
         swift += "        #if SWIFT_PACKAGE\n"
-        swift += "            \(modulde(packageName))\n"
+        swift += "            \(module(packageName))\n"
         swift += "        #else\n"
         swift += "            return Bundle(for: BundleLocator.self)\n"
         swift += "        #endif\n"
@@ -66,7 +66,7 @@ public struct SwiftGenerator {
         return swift
     }
 
-    private static func modulde(_ packageName: String?) -> String {
+    private static func module(_ packageName: String?) -> String {
         if let packageName = packageName {
             return """
             let bundleName = "\(packageName)_\(packageName)"
