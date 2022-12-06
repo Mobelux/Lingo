@@ -55,7 +55,7 @@ struct LingoPlugin: BuildToolPlugin {
     ) async throws -> [Command] {
         guard
             let sourceTarget = target as? SourceModuleTarget,
-            let inputFilePath = sourceTarget.sourceFiles(withSuffix: "strings")
+            let inputFile = sourceTarget.sourceFiles(withSuffix: "strings")
                 .map(\.path)
                 .first else {
             return []
@@ -65,7 +65,7 @@ struct LingoPlugin: BuildToolPlugin {
             .appending(["GeneratedSources", "Lingo.swift"])
 
         let lingo = try context.tool(named: "Lingo")
-        return [lingoCommand(lingo, input: inputFilePath, output: outputFile)]
+        return [lingoCommand(lingo, input: inputFile, output: outputFile)]
     }
 }
 
@@ -81,7 +81,7 @@ extension LingoPlugin: XcodeBuildToolPlugin {
             .filter { $0.type == .source && $0.path.extension == "strings" }
             .map(\.path)
 
-        guard let inputFilePath = inputFilePaths.first else {
+        guard let inputFile = inputFilePaths.first else {
             return []
         }
 
@@ -89,7 +89,7 @@ extension LingoPlugin: XcodeBuildToolPlugin {
             .appending(["GeneratedSources", "Lingo.swift"])
 
         let lingo = try context.tool(named: "Lingo")
-        return [lingoCommand(lingo, input: inputFilePath, output: outputFile)]
+        return [lingoCommand(lingo, input: inputFile, output: outputFile)]
     }
 }
 #endif
