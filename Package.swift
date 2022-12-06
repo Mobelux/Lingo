@@ -18,14 +18,14 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "Lingo",
-            dependencies: ["Core",
+            dependencies: ["LingoCore",
                            .product(name: "ArgumentParser", package: "swift-argument-parser")]),
         .target(
-            name: "Core",
+            name: "LingoCore",
             dependencies: []),
         .testTarget(
             name: "LingoTests",
-            dependencies: ["Core"]),
+            dependencies: ["LingoCore"]),
         .plugin(
             name: "LingoPlugin",
             capability: .buildTool(),
