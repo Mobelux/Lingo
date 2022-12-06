@@ -72,26 +72,29 @@ extension LingoPlugin: XcodeBuildToolPlugin {
         target: XcodeTarget
     ) throws -> [Command] {
         let inputFilePaths = target.inputFiles
+            .filter { $0.type == .source && $0.path.extension == "strings" }
             .map(\.path)
 
-        guard inputFilePaths.isEmpty == false else {
+        guard let inputFilePath = inputFilePaths.first else {
             return []
         }
 
-        let lingo = try context.tool(named: "lingo")
-        var arguments: [String] = [
-            // ...
-        ]
+        let outputDir = context.pluginWorkDirectory.appending("GeneratedSources")
+        let outputFile = outputDir.appending("Lingo.swift")
 
-        // ...
+        let lingo = try context.tool(named: "lingo")
+        let arguments: [String] = [
+            "--input", inputFilePath.string,
+            "--output", outputFile.string
+        ]
 
         return [
             .buildCommand(
                 displayName: "Lingo",
                 executable: lingo.path,
                 arguments: arguments,
-                inputFiles: inputFilePaths,
-                outputFiles: [context.pluginWorkDirectory]
+                inputFiles: [inputFilePath],
+                outputFiles: [outputFile]
             )
         ]
     }
