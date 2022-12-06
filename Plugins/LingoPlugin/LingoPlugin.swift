@@ -28,12 +28,31 @@
 import Foundation
 import PackagePlugin
 
+func lingoCommand(
+    _ tool: PluginContext.Tool,
+    input: Path,
+    output: Path
+) -> Command {
+    let arguments: [String] = [
+        "--input", input.string,
+        "--output", output.string
+    ]
+
+    return .buildCommand(
+        displayName: "Lingo",
+        executable: tool.path,
+        arguments: arguments,
+        inputFiles: [input],
+        outputFiles: [output]
+    )
+}
+
 @main
 struct LingoPlugin: BuildToolPlugin {
     func createBuildCommands(
         context: PackagePlugin.PluginContext,
         target: PackagePlugin.Target
-    ) async throws -> [PackagePlugin.Command] {
+    ) async throws -> [Command] {
         guard
             let sourceTarget = target as? SourceModuleTarget,
             let inputFilePath = sourceTarget.sourceFiles(withSuffix: "strings")
@@ -42,24 +61,11 @@ struct LingoPlugin: BuildToolPlugin {
             return []
         }
 
-        let outputDir = context.pluginWorkDirectory.appending("GeneratedSources")
-        let outputFile = outputDir.appending("Lingo.swift")
+        let outputFile = context.pluginWorkDirectory
+            .appending(["GeneratedSources", "Lingo.swift"])
 
         let lingo = try context.tool(named: "Lingo")
-        let arguments: [String] = [
-            "--input", inputFilePath.string,
-            "--output", outputFile.string
-        ]
-
-        return [
-            .buildCommand(
-                displayName: "Lingo",
-                executable: lingo.path,
-                arguments: arguments,
-                inputFiles: [inputFilePath],
-                outputFiles: [outputFile]
-            )
-        ]
+        return [lingoCommand(lingo, input: inputFilePath, output: outputFile)]
     }
 }
 
@@ -79,24 +85,11 @@ extension LingoPlugin: XcodeBuildToolPlugin {
             return []
         }
 
-        let outputDir = context.pluginWorkDirectory.appending("GeneratedSources")
-        let outputFile = outputDir.appending("Lingo.swift")
+        let outputFile = context.pluginWorkDirectory
+            .appending(["GeneratedSources", "Lingo.swift"])
 
-        let lingo = try context.tool(named: "lingo")
-        let arguments: [String] = [
-            "--input", inputFilePath.string,
-            "--output", outputFile.string
-        ]
-
-        return [
-            .buildCommand(
-                displayName: "Lingo",
-                executable: lingo.path,
-                arguments: arguments,
-                inputFiles: [inputFilePath],
-                outputFiles: [outputFile]
-            )
-        ]
+        let lingo = try context.tool(named: "Lingo")
+        return [lingoCommand(lingo, input: inputFilePath, output: outputFile)]
     }
 }
 #endif
