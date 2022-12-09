@@ -28,6 +28,11 @@
 import Foundation
 import PackagePlugin
 
+enum Constants {
+    static let outputDirectory = "GeneratedSources"
+    static let outputFile = "Lingo.swift"
+}
+
 func lingoCommand(
     _ tool: PluginContext.Tool,
     input: Path,
@@ -62,7 +67,7 @@ struct LingoPlugin: BuildToolPlugin {
         }
 
         let outputFile = context.pluginWorkDirectory
-            .appending(["GeneratedSources", "Lingo.swift"])
+            .appending([Constants.outputFile, Constants.outputFile])
 
         let lingo = try context.tool(named: "Lingo")
         return [lingoCommand(lingo, input: inputFile, output: outputFile)]
@@ -86,7 +91,7 @@ extension LingoPlugin: XcodeBuildToolPlugin {
         }
 
         let outputFile = context.pluginWorkDirectory
-            .appending(["GeneratedSources", "Lingo.swift"])
+            .appending([Constants.outputFile, Constants.outputFile])
 
         let lingo = try context.tool(named: "Lingo")
         return [lingoCommand(lingo, input: inputFile, output: outputFile)]
