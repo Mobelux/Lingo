@@ -78,7 +78,7 @@ extension LingoPlugin: XcodeBuildToolPlugin {
         target: XcodeTarget
     ) throws -> [Command] {
         let inputFilePaths = target.inputFiles
-            .filter { $0.type == .source && $0.path.extension == "strings" }
+            .filter { $0.type == .resource && $0.path.extension == "strings" }
             .map(\.path)
 
         guard let inputFile = inputFilePaths.first else {
