@@ -7,6 +7,7 @@ build/
 DerivedData/
 
 ## Various settings
+.vscode
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -37,7 +38,8 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
 .build/
-.swiftpm/
+.swiftpm/config/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 
 # CocoaPods
 #
