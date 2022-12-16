@@ -26,7 +26,7 @@
 //
 
 import ArgumentParser
-import Core
+import LingoCore
 
 struct Lingo: ParsableCommand {
     @Option(help: "path to Localizable.strings file")

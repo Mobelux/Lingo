@@ -26,7 +26,7 @@
 //
 
 import XCTest
-@testable import Core
+@testable import LingoCore
 
 class LingoTests: XCTestCase {
     let outputURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("output.swift")

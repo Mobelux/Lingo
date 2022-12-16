@@ -57,6 +57,31 @@ OUTPUT="./<app-name>/Utils/Lingo.swift"
 <path-to-lingo>/lingo --input $INPUT --output $OUTPUT
 ```
 
-### Usage
+## Usage
 
 Add a `Localizable.strings` file to your project, for most configurations this is your `--input` file. The first time Lingo is executed it will create a Swift source file at the location specified in `--output`. Add this file to your Xcode project. Subsequent executions will update this file, adding new localized strings.
+
+### Plugin Support
+
+Lingo can be used as a build tool plugin for Xcode projects or Swift packages. It does not require any configuration when used as a plugin.
+
+#### Xcode
+
+Add Lingo as a package dependency to your project without linking any of the products.
+
+Open the `Build Phases` inspector for the desired target, expand the `Run Build Tool Plug-ins` section, and select the `+` button. Select `LingoPlugin` from the list and add it to the project.
+
+#### Swift Package
+
+After adding `Lingo` as a package dependency in `Package.swift`, add `LingoPlugin` to a target using the `plugins` parameter:
+
+```
+targets: [
+    .target(
+        ...
+        plugins: [
+            .plugin(name: "LingoPlugin", package: "Lingo")
+        ]
+    )
+]
+```
