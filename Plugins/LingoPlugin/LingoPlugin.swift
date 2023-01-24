@@ -92,7 +92,8 @@ extension LingoPlugin: XcodeBuildToolPlugin {
         }
 
         let outputFile = context.pluginWorkDirectory
-            .appending([Constants.outputDirectory, Constants.outputFile])
+            .appending([Constants.outputFile])
+            // .appending([Constants.outputDirectory, Constants.outputFile])
 
         let lingo = try context.tool(named: "Lingo")
         return [lingoCommand(lingo, input: inputFile, output: outputFile)]
