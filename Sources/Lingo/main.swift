@@ -29,6 +29,10 @@ import ArgumentParser
 import LingoCore
 
 struct Lingo: ParsableCommand {
+    static let configuration = CommandConfiguration(
+        abstract: "Swift code generation for Localizable.strings files",
+        version: Version.number)
+
     @Option(help: "path to Localizable.strings file")
     var input: String
 
