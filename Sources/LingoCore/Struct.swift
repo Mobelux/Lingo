@@ -27,7 +27,11 @@
 
 import Foundation
 
+/// A struct that will be generated from a `Localizable.strings` file.
 public struct Struct {
+    /// The name of the struct.
     public let name: String
+
+    /// The keys that will be in the struct.
     public let keys: [String]
 }
