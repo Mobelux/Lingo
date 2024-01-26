@@ -19,7 +19,7 @@ on:
       - 'Package.resolved'
 
 jobs:
-  build:
+  test:
     name: Run Tests
     runs-on: macos-latest
     if: github.event.pull_request.draft == false
@@ -40,4 +40,13 @@ jobs:
       run: swift build -v
 
     - name: Run tests
-      run: swift test -v
+      # Need to use `--parallel` to generate the report: https://github.com/apple/swift-package-manager/issues/4752
+      run: swift test --xunit-output report.xml --parallel --num-workers=1
+
+    - name: Report
+      if: success() || failure()
+      uses: dorny/test-reporter@v1
+      with:
+        name: Test Report
+        path: report.xml
+        reporter: java-junit
