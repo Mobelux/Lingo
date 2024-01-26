@@ -47,6 +47,6 @@ jobs:
       if: success() || failure()
       uses: dorny/test-reporter@v1
       with:
-        name: Test Report
+        name: Report Results
         path: report.xml
         reporter: java-junit
