@@ -3,8 +3,20 @@ name: Test
 on:
   push:
     branches: [ main ]
+    paths:
+      - '.github/workflows/test.yml'
+      - '**.swift'
+      - 'Package.resolved'
   pull_request:
-    branches: [ main ]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+    paths:
+      - '.github/workflows/test.yml'
+      - '**.swift'
+      - 'Package.resolved'
 
 jobs:
   build:
