@@ -1,6 +1,6 @@
 //
-//  main.swift
-//  LingoCore
+//  Lingo.swift
+//  Lingo
 //
 //  MIT License
 //
