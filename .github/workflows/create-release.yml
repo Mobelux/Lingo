@@ -10,7 +10,7 @@ jobs:
   test:
     name: Test
     if: github.event.pull_request.merged == true && github.head_ref == 'release'
-    uses: Mobelux/Watcher/.github/workflows/tests.yml@main
+    uses: Mobelux/Lingo/.github/workflows/test.yml@main
 
   release:
     name: Release

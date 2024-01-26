@@ -22,11 +22,10 @@ jobs:
       - name: Bump Version file
         id: bump
         run: |
-          echo "version=$(swift package --allow-writing-to-package-directory version-file --target watcher --bump ${{ inputs.release_type }})" >> $GITHUB_OUTPUT
+          echo "version=$(swift package --allow-writing-to-package-directory version-file --target Lingo --bump ${{ inputs.release_type }})" >> $GITHUB_OUTPUT
 
       - name: Create pull request
-        id: cpr
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           commit-message: Bump Version.swift -> ${{ steps.bump.outputs.version }}
           committer: GitHub <noreply@github.com>
