@@ -28,6 +28,8 @@
 import ArgumentParser
 import LingoCore
 
+/// The main entry point for the Lingo command line tool.
+@main
 struct Lingo: ParsableCommand {
     static let configuration = CommandConfiguration(
         abstract: "Swift code generation for Localizable.strings files",
@@ -47,9 +49,8 @@ struct Lingo: ParsableCommand {
     )
     var packageName: String?
 
+    /// Runs the Lingo command line tool.
     func run() throws {
         try LingoCore.run(input: input, output: output, packageName: packageName)
     }
 }
-
-Lingo.main()
