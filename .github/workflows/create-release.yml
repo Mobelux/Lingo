@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           VERSION=$(grep -Eo '([0-9]+\.*)+' ${{ vars.VERSION_FILE_PATH }})
-          echo "current-version=$VERSION" >> $GITHUB_ENV
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Push tag
         uses: actions/github-script@v7
@@ -35,7 +35,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${{ env.current-version }}',
+              ref: 'refs/tags/${{ steps.get-version.outputs.version }}',
               sha: '${{ github.sha }}'
             })
 
@@ -46,7 +46,7 @@ jobs:
             github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag_name: '${{ env.current-version }}',
+              tag_name: '${{ steps.get-version.outputs.version }}',
               generate_release_notes: true,
               draft: false,
               prerelease: false
