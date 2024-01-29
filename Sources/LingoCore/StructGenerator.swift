@@ -27,7 +27,11 @@
 
 import Foundation
 
+/// Generates `Struct`s from the keys in a `Localizable.strings` file.
 public struct StructGenerator {
+    /// Returns an array of `Struct`s from the keys in a `Localizable.strings` file.
+    ///
+    /// - Parameter keyValues: The keys and values from a `Localizable.strings` file.
     public static func generate(keyValues: [String:String]) -> [Struct] {
         let sortedKeys = Array(keyValues.keys).sorted()
 
