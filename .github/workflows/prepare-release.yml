@@ -1,0 +1,39 @@
+name: Prepare Release
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: Type of release
+        type: choice
+        required: true
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  prepare:
+    name: Prepare Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+
+      - name: Bump Version file
+        id: bump
+        run: |
+          echo "version=$(swift package --allow-writing-to-package-directory version-file --target Lingo --bump ${{ inputs.release_type }})" >> $GITHUB_OUTPUT
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: Bump Version.swift -> ${{ steps.bump.outputs.version }}
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          branch: release
+          delete-branch: true
+          title: '[CI] Prepare Version ${{ steps.bump.outputs.version }} Release'
+          body: |
+            Update `Version.swift` with bumped version number.
+          labels: ci
+          draft: false

@@ -1,0 +1,53 @@
+name: Release
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'main'
+
+jobs:
+  test:
+    name: Test
+    if: github.event.pull_request.merged == true && github.head_ref == 'release'
+    uses: Mobelux/Lingo/.github/workflows/test.yml@main
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.head_ref == 'release'
+    needs: test
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: get-version
+        shell: bash
+        run: |
+          VERSION=$(grep -Eo '([0-9]+\.*)+' ${{ vars.VERSION_FILE_PATH }})
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Push tag
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ steps.get-version.outputs.version }}',
+              sha: '${{ github.sha }}'
+            })
+
+      - name: Create release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: '${{ steps.get-version.outputs.version }}',
+              generate_release_notes: true,
+              draft: false,
+              prerelease: false
+            })
