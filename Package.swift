@@ -13,7 +13,7 @@ let package = Package(
         .plugin(name: "LingoPlugin", targets: ["LingoPlugin"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "1.0.0")),
+        .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "1.3.0")),
     ],
     targets: [
         .executableTarget(
