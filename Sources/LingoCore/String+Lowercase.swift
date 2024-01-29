@@ -28,6 +28,7 @@
 import Foundation
 
 public extension String {
+    /// Returns a new string with the first character lowercased.
     func lowercaseFirstCharacter() -> String {
         let firstIndex = index(after: startIndex)
 		return self[..<firstIndex].lowercased() + self[firstIndex...]

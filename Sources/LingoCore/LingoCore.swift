@@ -27,7 +27,14 @@
 
 import Foundation
 
+/// The main entry point for LingoCore.
 public struct LingoCore {
+    /// Runs LingoCore.
+    ///
+    /// - Parameters:
+    ///  - input: The path to the Localizable.strings file.
+    ///  - output: The path to write the generated Swift file to.
+    ///  - packageName: The name of the SPM package which `Lingo.swift` will belong to.
     public static func run(input: String, output: String, packageName: String?) throws {
         guard let fileData = FileHandler.readFiles(inputPath: input, outputPath: output) else {
             throw LingoError.custom("Couldn't read files. Did you type your arguments incorrectly?")
