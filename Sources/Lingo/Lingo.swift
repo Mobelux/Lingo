@@ -49,8 +49,13 @@ struct Lingo: ParsableCommand {
     )
     var packageName: String?
 
+    @Flag(help: ArgumentHelp(
+        "Write the generated file non-atomically.",
+        discussion: "This is offered as a workaround for a permissions issue that prevents the build tool plugin from working on Xcode Cloud when writing atomically."))
+    var nonAtomic = false
+
     /// Runs the Lingo command line tool.
     func run() throws {
-        try LingoCore.run(input: input, output: output, packageName: packageName)
+        try LingoCore.run(input: input, output: output, packageName: packageName, writeAtomically: !nonAtomic)
     }
 }

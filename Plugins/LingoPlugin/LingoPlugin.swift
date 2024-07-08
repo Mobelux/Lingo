@@ -40,7 +40,8 @@ func lingoCommand(
 ) -> Command {
     let arguments: [String] = [
         "--input", input.string,
-        "--output", output.string
+        "--output", output.string,
+        "--non-atomic"
     ]
 
     return .buildCommand(
