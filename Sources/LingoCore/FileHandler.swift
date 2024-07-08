@@ -42,9 +42,9 @@ struct FileHandler {
         }
     }
 
-    static func writeOutput(swift: String, to outputPath: String) throws {
+    static func writeOutput(swift: String, to outputPath: String, atomically: Bool = true) throws {
         let doWrite = {
-            try swift.write(toFile: outputPath, atomically: false, encoding: .utf8)
+            try swift.write(toFile: outputPath, atomically: atomically, encoding: .utf8)
         }
 
         if let existingSwift = try? String(contentsOfFile: outputPath)  {
