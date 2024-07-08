@@ -35,10 +35,10 @@ struct Lingo: ParsableCommand {
         abstract: "Swift code generation for Localizable.strings files",
         version: Version.number)
 
-    @Option(help: "path to Localizable.strings file")
+    @Option(help: "Path to Localizable.strings file.")
     var input: String
 
-    @Option(help: "path including file name to write Swift to")
+    @Option(help: "Path including file name to write Swift to.")
     var output: String
 
     @Option(
