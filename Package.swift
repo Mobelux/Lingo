@@ -25,7 +25,7 @@ let package = Package(
             name: "LingoCore",
             dependencies: []),
         .testTarget(
-            name: "LingoTests",
+            name: "CoreTests",
             dependencies: ["LingoCore"]),
         .plugin(
             name: "LingoPlugin",

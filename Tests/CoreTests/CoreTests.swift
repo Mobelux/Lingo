@@ -1,5 +1,5 @@
 //
-//  LingoTests.swift
+//  CoreTests.swift
 //  LingoTests
 //
 //  MIT License
@@ -28,7 +28,7 @@
 import XCTest
 @testable import LingoCore
 
-class LingoTests: XCTestCase {
+class CoreTests: XCTestCase {
     let outputURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("output.swift")
 
     override func tearDown() {
@@ -79,11 +79,11 @@ class LingoTests: XCTestCase {
         let structs = StructGenerator.generate(keyValues: keyValues)
         let swift = SwiftGenerator.generate(structs: structs, keyValues: keyValues, packageName: nil)
 
-        XCTAssert(swift == LingoTests.expectedText, "Generated Swift doesn't match expected")
+        XCTAssert(swift == CoreTests.expectedText, "Generated Swift doesn't match expected")
     }
 
     func testLocalizedStringParsing() {
-        let strings = LingoTests.localizableStrings
+        let strings = CoreTests.localizableStrings
 
         let keys = Array(KeyGenerator.generate(localizationFileContents: strings).keys).sorted()
 
@@ -96,23 +96,23 @@ class LingoTests: XCTestCase {
 
     func testFileHandling() {
         do {
-            let inputURL = try LingoTests.write(LingoTests.localizableStrings, toTemp: "input")
+            let inputURL = try CoreTests.write(CoreTests.localizableStrings, toTemp: "input")
             let fileData = FileHandler.readFiles(inputPath: inputURL.path, outputPath: outputURL.path)
             XCTAssertNotNil(fileData, "Couldn't read files")
 
-            try FileHandler.writeOutput(swift: LingoTests.expectedText, to: outputURL.path)
+            try FileHandler.writeOutput(swift: CoreTests.expectedText, to: outputURL.path)
         } catch let error {
             XCTAssert(false, error.localizedDescription)
         }
     }
 
     func testEverything() {
-        let url = try! LingoTests.write(LingoTests.localizableStrings, toTemp: "input")
+        let url = try! CoreTests.write(CoreTests.localizableStrings, toTemp: "input")
         measure {
             do {
                 try LingoCore.run(input: url.path, output: outputURL.path, packageName: nil)
 
-                let expectedSwift = LingoTests.expectedText
+                let expectedSwift = CoreTests.expectedText
                 let generatedSwift = try? String(contentsOf: self.outputURL)
                 XCTAssertNotNil(generatedSwift, "Didn't generate Swift")
                 if let generatedSwift = generatedSwift {
@@ -125,7 +125,7 @@ class LingoTests: XCTestCase {
     }
 }
 
-private extension LingoTests {
+private extension CoreTests {
     static func write(_ text: String, toTemp fileName: String) throws -> URL {
         let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
         try text.write(to: url, atomically: true, encoding: .utf8)
