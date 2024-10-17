@@ -38,6 +38,11 @@ class LingoTests: XCTestCase {
         let command = "lingo --input \(inputURL.path()) --output \(outputURL.path()) --package-name Localization"
         try AssertExecuteCommand(command: command)
     }
+
+    func testMissingOptionsFail() throws {
+        let command = "lingo --package-name Localization"
+        try AssertExecuteCommand(command: command, exitCode: ExitCode(64))
+    }
 }
 
 private extension LingoTests {
