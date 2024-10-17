@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 //
 
-@testable import lingo
 import ArgumentParser
 import XCTest
 
