@@ -35,7 +35,16 @@ public struct LingoCore {
     ///  - input: The path to the Localizable.strings file.
     ///  - output: The path to write the generated Swift file to.
     ///  - packageName: The name of the SPM package which `Lingo.swift` will belong to.
-    public static func run(input: String, output: String, packageName: String?) throws {
+    ///  - writeAtomically: If `true`, the generated Swift file is first written to an auxiliary
+    ///  file, and then the auxiliary file is renamed to `output`. The `true` option guarantees that
+    ///  `output`, if it exists at all, won’t be corrupted even if the system should crash during 
+    ///  writing.
+    public static func run(
+        input: String,
+        output: String,
+        packageName: String?,
+        writeAtomically: Bool = true
+    ) throws {
         guard let fileData = FileHandler.readFiles(inputPath: input, outputPath: output) else {
             throw LingoError.custom("Couldn't read files. Did you type your arguments incorrectly?")
         }
@@ -44,6 +53,6 @@ public struct LingoCore {
         let generatedStructs = StructGenerator.generate(keyValues: keyValues)
         let swift = SwiftGenerator.generate(structs: generatedStructs, keyValues: keyValues, packageName: packageName)
 
-        try FileHandler.writeOutput(swift: swift, to: output)
+        try FileHandler.writeOutput(swift: swift, to: output, atomically: writeAtomically)
     }
 }

@@ -40,7 +40,8 @@ func lingoCommand(
 ) -> Command {
     let arguments: [String] = [
         "--input", input.string,
-        "--output", output.string
+        "--output", output.string,
+        "--non-atomic"
     ]
 
     return .buildCommand(
@@ -67,7 +68,7 @@ struct LingoPlugin: BuildToolPlugin {
         }
 
         let outputFile = context.pluginWorkDirectory
-            .appending([Constants.outputFile, Constants.outputFile])
+            .appending([Constants.outputDirectory, Constants.outputFile])
 
         let lingo = try context.tool(named: "Lingo")
         return [lingoCommand(lingo, input: inputFile, output: outputFile)]
@@ -91,7 +92,7 @@ extension LingoPlugin: XcodeBuildToolPlugin {
         }
 
         let outputFile = context.pluginWorkDirectory
-            .appending([Constants.outputFile, Constants.outputFile])
+            .appending([Constants.outputDirectory, Constants.outputFile])
 
         let lingo = try context.tool(named: "Lingo")
         return [lingoCommand(lingo, input: inputFile, output: outputFile)]
