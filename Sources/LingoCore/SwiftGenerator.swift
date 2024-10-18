@@ -77,7 +77,19 @@ public struct SwiftGenerator {
         if let packageName = packageName {
             return """
             let bundleName = "\(packageName)_\(packageName)"
-                        let candidates = [
+                        let overrides: [URL]
+                        #if DEBUG
+                        if let override = ProcessInfo.processInfo.environment["PACKAGE_RESOURCE_BUNDLE_PATH"]
+                                       ?? ProcessInfo.processInfo.environment["PACKAGE_RESOURCE_BUNDLE_URL"] {
+                            overrides = [URL(fileURLWithPath: override)]
+                        } else {
+                            overrides = []
+                        }
+                        #else
+                        overrides = []
+                        #endif
+            
+                        let candidates = overrides + [
                             /* Bundle should be present here when the package is linked into an App. */
                             Bundle.main.resourceURL,
                             /* Bundle should be present here when the package is linked into a framework. */
